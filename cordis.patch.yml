@@ -1,0 +1,36 @@
+# DSH patch rows cannot rename a matched row: the name field is an expected
+# name guard, not a replacement value. Disable the two host-side official
+# owners that need extra configuration and insert one adapter row for each.
+# Keep the official connection row active: it is a dual-face host/client
+# package, and disabling it would remove the browser-side `dsh.client`
+# connection entry from `window.__DSH_BOOT__`. The adapter below patches the
+# official HostConnectionService after it is ready.
+
+- id: web-startup
+  name: '@deepseek-ai/dsh-web-app/startup'
+  disabled: true
+
+- id: web-runtime
+  name: '@deepseek-ai/dsh-web-app'
+  disabled: true
+
+- insert:
+    - id: dsh-web-remote-startup
+      name: dsh-web-remote/startup
+
+    - id: dsh-web-remote-runtime
+      name: dsh-web-remote/runtime
+      inject: [webStartup]
+      config:
+        openBrowser: !!js ctx.webStartup.openBrowser
+        printUrl: true
+        surfaceContext: true
+        trustedHosts: !!js ctx.webStartup.trustedHosts
+        advertiseUrl: !!js ctx.webStartup.advertiseUrl
+        remoteSettings: !!js ctx.webStartup.remoteSettings
+
+    - id: dsh-web-remote-connection
+      name: dsh-web-remote/connection
+      inject: [connection, webStartup]
+      config:
+        browserAuth: !!js ctx.webStartup.browserAuth
