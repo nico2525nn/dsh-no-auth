@@ -152,3 +152,11 @@ npm run test:e2e
 ~~~
 
 The fast tests cover startup URL validation, stock/disabled auth method behavior, 403 trust-fence preservation, the 0.0.0.0 policy, arbitrary ports including zero at the parser boundary, advertised URL/trust separation, remote-settings opt-in metadata, and actual bundle patch composition semantics. The optional CLI E2E test installs this checkout with `dsh plugin --profile web add`, then verifies the installed browser roster retains `@deepseek-ai/dsh-client-connection`, token-to-cookie auth, auth-off root/API/WebSocket access, Host/Origin rejection, advertised URL output, and uninstall restoration against the selected DSH channel. The underlying HTTP bridge, WebServer, and browser Connection module remain upstream-owned; the adapter never forks those route owners.
+
+## Android PWA companion
+
+The Android-specific manifest/icon/bootstrap fix is maintained as a separate
+bundle in [`plugins/dsh-web-pwa/`](plugins/dsh-web-pwa/). It can be installed
+alongside this remote bundle and does not replace the official Web rows. Build
+that package, then run `dsh plugin --profile web add ./plugins/dsh-web-pwa`; its
+README documents the clean-profile and Android startup flow.

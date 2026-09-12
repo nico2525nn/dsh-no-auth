@@ -1,0 +1,7 @@
+# Add one small route/icon owner after the stock Web bundle (or after
+# dsh-web-remote). No official row is replaced: the frontend, Connection
+# browser roster, API, WebSocket, and BrowserAuth implementation stay upstream.
+- insert:
+    - id: dsh-web-pwa
+      name: dsh-web-pwa
+      inject: [webServer, connection]

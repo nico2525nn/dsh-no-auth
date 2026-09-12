@@ -1,0 +1,8 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="512" height="512" viewBox="0 0 512 512" role="img" aria-labelledby="title">
+  <title>DeepSeek Harness</title>
+  <rect width="512" height="512" rx="112" fill="#0b1020"/>
+  <rect x="48" y="48" width="416" height="416" rx="88" fill="#16213d" stroke="#3b82f6" stroke-width="12"/>
+  <path fill="#f8fafc" d="M146 154h62v154c0 25 14 39 39 39 25 0 39-14 39-39V154h62v159c0 60-37 93-101 93-64 0-101-33-101-93V154Z"/>
+  <circle cx="161" cy="373" r="12" fill="#60a5fa"/>
+  <circle cx="351" cy="373" r="12" fill="#60a5fa"/>
+</svg>
